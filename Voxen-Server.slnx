@@ -5,5 +5,7 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
-  <Folder Name="/src/" />
+  <Folder Name="/src/">
+    <Project Path="src/Voxen.Server/Voxen.Server.csproj" />
+  </Folder>
 </Solution>
