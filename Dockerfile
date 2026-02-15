@@ -5,6 +5,7 @@ WORKDIR /src
 # Copy solution, props, and project file
 COPY Voxen-Server.slnx ./
 COPY Directory.Build.props ./
+COPY Directory.Packages.props ./
 COPY src/Voxen.Server/Voxen.Server.csproj ./Voxen.Server/
 
 # Restore dependencies
