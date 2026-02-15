@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # Copy solution and project files
-COPY Voxen.slnx ./
+COPY Voxen-Server.slnx ./
 COPY src/Voxen.Server/Voxen.Server.csproj ./Voxen.Server/
 RUN dotnet restore Voxen.Server/Voxen.Server.csproj
 
