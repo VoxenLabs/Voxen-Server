@@ -65,15 +65,15 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+app.UseFastEndpoints();
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Voxen API v1");
     c.RoutePrefix = string.Empty;
 });
-app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 
-app.UseRouting();
 //app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -81,7 +81,5 @@ app.UseAuthorization();
 using var scope = app.Services.CreateScope();
 var db = scope.ServiceProvider.GetRequiredService<VoxenDbContext>();
 await db.Database.MigrateAsync();
-
-app.UseFastEndpoints(); 
 
 await app.RunAsync();
