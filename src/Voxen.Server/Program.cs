@@ -68,19 +68,23 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Voxen API v1");
+    });
     app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 }
 
+app.UseRouting();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseFastEndpoints();
 
 using var scope = app.Services.CreateScope();
 var db = scope.ServiceProvider.GetRequiredService<VoxenDbContext>();
 await db.Database.MigrateAsync();
 
+app.UseFastEndpoints(); 
 app.MapControllers();
 
 await app.RunAsync();
