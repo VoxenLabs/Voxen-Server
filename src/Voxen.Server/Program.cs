@@ -23,7 +23,7 @@ builder.Services.SwaggerDocument(o =>
     };
 });
 
-var dbPath = Environment.GetEnvironmentVariable("VOXEN_DB_PATH") ?? "data/voxen.db";
+var dbPath = Environment.GetEnvironmentVariable("VOXEN_DB_PATH") ?? "voxen.db";
 builder.Services.AddDbContext<VoxenDbContext>(options => options.UseSqlite($"Data Source={dbPath}"));
 
 builder.Services
@@ -85,6 +85,5 @@ var db = scope.ServiceProvider.GetRequiredService<VoxenDbContext>();
 await db.Database.MigrateAsync();
 
 app.UseFastEndpoints(); 
-app.MapControllers();
 
 await app.RunAsync();
