@@ -65,18 +65,16 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Voxen API v1");
-    });
-    app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Voxen API v1");
+    c.RoutePrefix = string.Empty;
+});
+app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 
 app.UseRouting();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
