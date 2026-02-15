@@ -66,6 +66,7 @@ builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 app.UseFastEndpoints();
+app.UseStaticFiles();
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>
