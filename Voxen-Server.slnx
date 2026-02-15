@@ -3,6 +3,10 @@
   <Folder Name="/.github/workflows/">
     <File Path=".github/workflows/build.yml" />
   </Folder>
+  <Folder Name="/docker/">
+    <File Path="docker-compose.development.yml" />
+    <File Path="Dockerfile" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
     <File Path=".gitignore" />

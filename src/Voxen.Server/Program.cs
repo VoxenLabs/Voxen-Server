@@ -23,11 +23,8 @@ builder.Services.SwaggerDocument(o =>
     };
 });
 
-builder.Services.AddDbContext<VoxenDbContext>(options =>
-{
-    options.UseSqlite(
-        builder.Configuration.GetConnectionString("VoxenDB"));
-});
+var dbPath = Environment.GetEnvironmentVariable("VOXEN_DB_PATH") ?? "data/voxen.db";
+builder.Services.AddDbContext<VoxenDbContext>(options => options.UseSqlite($"Data Source={dbPath}"));
 
 builder.Services
     .AddIdentityCore<User>(options =>
@@ -83,5 +80,7 @@ app.UseFastEndpoints();
 using var scope = app.Services.CreateScope();
 var db = scope.ServiceProvider.GetRequiredService<VoxenDbContext>();
 await db.Database.MigrateAsync();
+
+app.MapControllers();
 
 await app.RunAsync();

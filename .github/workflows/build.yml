@@ -61,3 +61,14 @@ jobs:
         if: success()
         run: |
           dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+  dry-run:
+    name: Dry run docker image build
+    runs-on: [self-hosted, Linux]
+    needs: ["build"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - run: |
+          docker image build .
