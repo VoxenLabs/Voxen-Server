@@ -1,21 +1,14 @@
 using FastEndpoints;
 using FastEndpoints.Swagger;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Voxen.Server;
 using Voxen.Server.Authentication.Extensions;
-using Voxen.Server.Authentication.Interfaces;
-using Voxen.Server.Authentication.Services;
 using Voxen.Server.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddFastEndpoints();
-
-builder.Services.AddSwaggerGen();
 builder.Services.SwaggerDocument(o =>
 {
     o.ShortSchemaNames = true;
@@ -43,43 +36,14 @@ builder.Services
     .AddDefaultTokenProviders();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
-
-builder.Services
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-
-            ValidIssuer = jwtSettings["Issuer"],
-            ValidAudience = jwtSettings["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(key),
-
-            ClockSkew = TimeSpan.Zero
-        };
-    });
+builder.Services.AddVoxenAuthentication(jwtSettings);
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddVoxenAuthentication();
-builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
-
 var app = builder.Build();
 
-app.UseFastEndpoints();
+app.UseFastEndpoints().UseSwaggerGen();
 app.UseStaticFiles();
-
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Voxen API v1");
-    c.RoutePrefix = string.Empty;
-});
 
 //app.UseHttpsRedirection();
 app.UseAuthentication();

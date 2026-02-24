@@ -36,7 +36,7 @@ cd Voxen-Server
 docker compose -f docker-compose.development.yml up -d
 ```
 
-This will build the required Docker images locally and start the server in detached mode. If succesful, The **Swagger** environment will be reachable on http://localhost:5000/
+This will build the required Docker images locally and start the server in detached mode. If succesful, The **Swagger** environment will be reachable on http://localhost:5000/swagger
 
 ## Notes
 

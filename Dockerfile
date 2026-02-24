@@ -6,7 +6,7 @@ WORKDIR /src
 COPY Voxen-Server.slnx ./
 COPY Directory.Build.props ./
 COPY Directory.Packages.props ./
-COPY src/Voxen.Server/Voxen.Server.csproj ./Voxen.Server/
+COPY src/bundles/Voxen.Server/Voxen.Server.csproj ./Voxen.Server/
 
 # Restore dependencies
 RUN dotnet restore ./Voxen.Server/Voxen.Server.csproj
@@ -14,7 +14,7 @@ RUN dotnet restore ./Voxen.Server/Voxen.Server.csproj
 # Copy the rest of the source
 COPY src/ ./
 
-WORKDIR /src/Voxen.Server
+WORKDIR /src/bundles/Voxen.Server
 RUN dotnet publish -c Release -o /app
 
 # Stage 2: runtime
