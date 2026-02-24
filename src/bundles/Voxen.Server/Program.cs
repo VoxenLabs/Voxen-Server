@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Voxen.Server;
+using Voxen.Server.Authentication.Extensions;
+using Voxen.Server.Authentication.Interfaces;
+using Voxen.Server.Authentication.Services;
 using Voxen.Server.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -62,6 +65,9 @@ builder.Services
     });
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddVoxenAuthentication();
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
 var app = builder.Build();
 

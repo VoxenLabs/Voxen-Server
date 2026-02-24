@@ -13,4 +13,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\modules\Voxen.Server.Authentication\Voxen.Server.Authentication.csproj" />
+  </ItemGroup>
 </Project>

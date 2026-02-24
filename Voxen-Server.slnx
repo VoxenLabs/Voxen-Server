@@ -12,8 +12,10 @@
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
   </Folder>
-  <Folder Name="/src/">
-    <Project Path="src/Voxen.Server/Voxen.Server.csproj" />
+  <Folder Name="/src/" />
+  <Folder Name="/src/bundles/">
+    <Project Path="src/bundles/Voxen.Server/Voxen.Server.csproj" />
   </Folder>
 </Solution>
