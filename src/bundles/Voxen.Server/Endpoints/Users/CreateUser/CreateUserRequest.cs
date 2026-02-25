@@ -1,4 +1,4 @@
-namespace Voxen.Server.Endpoints.CreateUser;
+namespace Voxen.Server.Endpoints.Users.CreateUser;
 
 public class CreateUserRequest
 {

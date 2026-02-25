@@ -5,7 +5,7 @@ namespace Voxen.Server.Entities;
 public class User : IdentityUser<Guid>
 {
     public Guid ServerId { get; set; }
-    public Server Server { get; set; } = default!;
+    public Server Server { get; set; } = null!;
 
     public ServerRole Role { get; set; }
 

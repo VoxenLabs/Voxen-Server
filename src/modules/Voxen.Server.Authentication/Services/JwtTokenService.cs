@@ -10,7 +10,7 @@ namespace Voxen.Server.Authentication.Services;
 public class JwtTokenService(IConfiguration config) : IJwtTokenService
 {
     /// <inheritdoc />
-    public string CreateToken(Guid userId, string userName)
+    public string CreateToken(Guid userId, string userName, string userRole)
     {
         var jwt = config.GetSection("Jwt");
         var key = new SymmetricSecurityKey(
@@ -20,7 +20,8 @@ public class JwtTokenService(IConfiguration config) : IJwtTokenService
         {
             new(JwtRegisteredClaimNames.Sub, userId.ToString()),
             new(JwtRegisteredClaimNames.Email, userName),
-            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new("role", userRole)
         };
 
         var token = new JwtSecurityToken(

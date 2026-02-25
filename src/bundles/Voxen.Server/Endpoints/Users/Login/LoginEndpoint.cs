@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Authentication.Interfaces;
 using Voxen.Server.Entities;
 
-namespace Voxen.Server.Endpoints.Login;
+namespace Voxen.Server.Endpoints.Users.Login;
 
 public class LoginEndpoint(UserManager<User> userManager, IJwtTokenService jwtService) : Endpoint<LoginRequest>
 {
@@ -25,7 +25,7 @@ public class LoginEndpoint(UserManager<User> userManager, IJwtTokenService jwtSe
             return;
         }
 
-        var token = jwtService.CreateToken(user.Id, user.UserName!);
+        var token = jwtService.CreateToken(user.Id, user.UserName!, user.Role.ToString());
 
         await Send.OkAsync(new LoginResponse
         {

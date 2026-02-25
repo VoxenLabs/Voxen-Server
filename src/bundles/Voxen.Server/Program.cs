@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Voxen.Server;
 using Voxen.Server.Authentication.Extensions;
 using Voxen.Server.Entities;
+using Voxen.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,7 @@ builder.Services
         options.Password.RequiredLength = 8;
         options.Password.RequireDigit = true;
         options.Password.RequireNonAlphanumeric = false;
-        options.User.RequireUniqueEmail = true;
+        options.User.RequireUniqueEmail = false;
     })
     .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<VoxenDbContext>()
@@ -51,6 +52,7 @@ app.UseAuthorization();
 
 using var scope = app.Services.CreateScope();
 var db = scope.ServiceProvider.GetRequiredService<VoxenDbContext>();
-await db.Database.MigrateAsync();
+var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+await SeedData.InitializeDatabaseAsync(db, userManager);
 
 await app.RunAsync();

@@ -11,7 +11,7 @@ using Voxen.Server;
 namespace Voxen.Server.Migrations
 {
     [DbContext(typeof(VoxenDbContext))]
-    [Migration("20260213212123_InitialCreate")]
+    [Migration("20260225105001_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -2,7 +2,7 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Entities;
 
-namespace Voxen.Server.Endpoints.CreateUser;
+namespace Voxen.Server.Endpoints.Users.CreateUser;
 
 public class CreateUserEndpoint(UserManager<User> userManager) : Endpoint<CreateUserRequest>
 {
@@ -10,7 +10,7 @@ public class CreateUserEndpoint(UserManager<User> userManager) : Endpoint<Create
     public override void Configure()
     {
         Post("/auth/register");
-        AllowAnonymous();
+        Roles(nameof(ServerRole.Admin));
     }
 
     /// <inheritdoc />

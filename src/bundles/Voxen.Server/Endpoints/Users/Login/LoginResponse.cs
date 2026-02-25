@@ -1,4 +1,4 @@
-namespace Voxen.Server.Endpoints.Login;
+namespace Voxen.Server.Endpoints.Users.Login;
 
 public class LoginResponse
 {
