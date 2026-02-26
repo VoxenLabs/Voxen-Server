@@ -15,7 +15,7 @@ public class CreateUserEndpoint(UserManager<User> userManager, IServerConfigurat
     public override void Configure()
     {
         Post("/users/register");
-        Roles(nameof(ServerRole.Admin));
+        AllowAnonymous();
     }
 
     /// <inheritdoc />
