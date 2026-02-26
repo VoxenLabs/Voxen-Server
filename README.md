@@ -16,7 +16,7 @@ Make sure you have the following tools installed:
 
 ## Getting started
 
-### Development
+### Initialize Docker Image
 
 #### 1. Clone the repository
 
@@ -37,6 +37,14 @@ docker compose -f docker-compose.development.yml up -d
 ```
 
 This will build the required Docker images locally and start the server in detached mode. If succesful, The **Swagger** environment will be reachable on http://localhost:5000/swagger
+
+### Authenticate user
+
+On creation of the container, a default admin-user will be initialized with the following credentials:
+* Username: `admin`
+* Password: `Password123!`
+
+To authenticate the **Swagger** environment, make a call to the `/auth/login` endpoint with the above credentials to retrieve a JWT token. Then, use the "Authorize" button in the Swagger UI to input the token and gain access to authenticated endpoints.
 
 ## Notes
 
