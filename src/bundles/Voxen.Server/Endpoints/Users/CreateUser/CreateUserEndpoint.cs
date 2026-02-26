@@ -1,6 +1,7 @@
 using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Entities;
+using Voxen.Server.Enums;
 using Voxen.Server.Interfaces;
 
 namespace Voxen.Server.Endpoints.Users.CreateUser;
@@ -13,7 +14,7 @@ public class CreateUserEndpoint(UserManager<User> userManager, IServerConfigurat
     /// <inheritdoc />
     public override void Configure()
     {
-        Post("/auth/register");
+        Post("/users/register");
         Roles(nameof(ServerRole.Admin));
     }
 

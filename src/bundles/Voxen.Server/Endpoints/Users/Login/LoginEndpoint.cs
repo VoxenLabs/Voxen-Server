@@ -13,7 +13,7 @@ public class LoginEndpoint(UserManager<User> userManager, IJwtTokenService jwtSe
     /// <inheritdoc />
     public override void Configure()
     {
-        Post("/auth/login");
+        Post("/users/login");
         AllowAnonymous();
     }
 
