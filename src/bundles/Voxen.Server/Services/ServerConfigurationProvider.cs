@@ -39,7 +39,7 @@ public class ServerConfigurationProvider(VoxenDbContext db) : IServerConfigurati
         if (records.Count > 1)
         {
             throw new InvalidOperationException(
-                "More than one ServerConfiguration record exists.");
+                "More than one ServerConfiguration records exists.");
         }
 
         return records[0];
