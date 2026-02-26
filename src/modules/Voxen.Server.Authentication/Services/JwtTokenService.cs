@@ -7,6 +7,7 @@ using Voxen.Server.Authentication.Interfaces;
 
 namespace Voxen.Server.Authentication.Services;
 
+/// <inheritdoc />
 public class JwtTokenService(IConfiguration config) : IJwtTokenService
 {
     /// <inheritdoc />

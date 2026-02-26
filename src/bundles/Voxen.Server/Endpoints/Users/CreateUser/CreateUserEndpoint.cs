@@ -5,6 +5,14 @@ using Voxen.Server.Interfaces;
 
 namespace Voxen.Server.Endpoints.Users.CreateUser;
 
+/// <summary>
+/// Represents an endpoint for creating a new user in the system.
+/// </summary>
+/// <remarks>
+/// This endpoint handles the registration of a new user by creating a user entity
+/// and associating it with a server. It requires the user to have the <see cref="ServerRole.Admin"/> role
+/// to perform this operation. The endpoint is accessible via the POST method at the route "/auth/register".
+/// </remarks>
 public class CreateUserEndpoint(UserManager<User> userManager, IServerConfigurationProvider serverConfigurationProvider) : Endpoint<CreateUserRequest>
 {
     /// <inheritdoc />

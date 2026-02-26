@@ -8,8 +8,22 @@ using Voxen.Server.Authentication.Services;
 
 namespace Voxen.Server.Authentication.Extensions;
 
+/// <summary>
+/// Provides extension methods for configuring authentication services in the application.
+/// </summary>
 public static class ServiceCollectionExtensions
 {
+    /// <summary>
+    /// Configures JWT-based authentication for the application.
+    /// </summary>
+    /// <param name="services">The <see cref="IServiceCollection"/> to which the authentication services will be added.</param>
+    /// <param name="jwtSettings">
+    /// A configuration section containing the JWT settings, including the signing key, issuer, and audience.
+    /// </param>
+    /// <returns>The updated <see cref="IServiceCollection"/> with authentication services configured.</returns>
+    /// <remarks>
+    /// This method sets up JWT authentication using the provided settings and registers the <see cref="IJwtTokenService"/> implementation.
+    /// </remarks>
     public static IServiceCollection AddVoxenAuthentication(this IServiceCollection services,
         IConfigurationSection jwtSettings)
     {

@@ -5,6 +5,14 @@ using Voxen.Server.Entities;
 
 namespace Voxen.Server.Endpoints.Users.Login;
 
+/// <summary>
+/// Represents the endpoint responsible for handling user login requests.
+/// </summary>
+/// <remarks>
+/// This endpoint processes login requests by validating user credentials and generating a JWT token
+/// for authenticated users. It supports anonymous access and is configured to handle POST requests
+/// to the <c>/auth/login</c> route.
+/// </remarks>
 public class LoginEndpoint(UserManager<User> userManager, IJwtTokenService jwtService) : Endpoint<LoginRequest>
 {
     /// <inheritdoc />
