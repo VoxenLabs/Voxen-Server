@@ -3,6 +3,15 @@ using Voxen.Server.Interfaces;
 
 namespace Voxen.Server.Services;
 
+/// <summary>
+/// Provides functionality to manage and retrieve server configuration details from the database.
+/// </summary>
+/// <remarks>
+/// This class implements the <see cref="Voxen.Server.Interfaces.IServerConfigurationProvider"/> interface
+/// and interacts with the <see cref="Voxen.Server.VoxenDbContext"/> to fetch server configuration data.
+/// It ensures that only a single server configuration record exists and throws exceptions if the
+/// database state is invalid.
+/// </remarks>
 public class ServerConfigurationProvider(VoxenDbContext db) : IServerConfigurationProvider
 {
     /// <summary>
