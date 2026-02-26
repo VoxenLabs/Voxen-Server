@@ -8,10 +8,10 @@ public enum ChannelType
     /// <summary>
     /// Represents a text-based communication channel within a server.
     /// </summary>
-    Text = 1,
+    Text = 0,
 
     /// <summary>
     /// Represents a voice-based communication channel.
     /// </summary>
-    Voice = 2
+    Voice = 1
 }
