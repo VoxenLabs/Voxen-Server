@@ -1,3 +1,5 @@
+using Voxen.Server.Enums;
+
 namespace Voxen.Server.Entities;
 
 /// <summary>
@@ -34,20 +36,4 @@ public class Channel
     /// Gets or sets the collection of messages associated with this channel.
     /// </summary>
     public ICollection<Message>? Messages { get; set; }
-}
-
-/// <summary>
-/// Specifies the type of a communication channel.
-/// </summary>
-public enum ChannelType
-{
-    /// <summary>
-    /// Represents a text-based communication channel within a server.
-    /// </summary>
-    Text = 1,
-    
-    /// <summary>
-    /// Represents a voice-based communication channel.
-    /// </summary>
-    Voice = 2
 }
