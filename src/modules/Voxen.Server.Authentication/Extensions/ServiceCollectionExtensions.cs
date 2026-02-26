@@ -21,7 +21,7 @@ public static class ServiceCollectionExtensions
     /// A configuration section containing the JWT settings, including the signing key, issuer, and audience.
     /// </param>
     /// <returns>The updated <see cref="IServiceCollection"/> with authentication services configured.</returns>
-    public static IServiceCollection AddVoxenAuthentication(this IServiceCollection services,
+    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services,
         IConfigurationSection jwtSettings)
     {
         var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
