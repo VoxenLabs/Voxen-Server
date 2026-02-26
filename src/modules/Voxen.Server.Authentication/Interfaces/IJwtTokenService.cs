@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Configuration;
-
 namespace Voxen.Server.Authentication.Interfaces;
 
 /// <summary>
