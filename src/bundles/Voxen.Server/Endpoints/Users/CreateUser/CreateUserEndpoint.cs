@@ -1,10 +1,11 @@
 using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Entities;
+using Voxen.Server.Interfaces;
 
 namespace Voxen.Server.Endpoints.Users.CreateUser;
 
-public class CreateUserEndpoint(UserManager<User> userManager) : Endpoint<CreateUserRequest>
+public class CreateUserEndpoint(UserManager<User> userManager, IServerConfigurationProvider serverConfigurationProvider) : Endpoint<CreateUserRequest>
 {
     /// <inheritdoc />
     public override void Configure()
@@ -16,7 +17,15 @@ public class CreateUserEndpoint(UserManager<User> userManager) : Endpoint<Create
     /// <inheritdoc />
     public override async Task HandleAsync(CreateUserRequest request, CancellationToken ct)
     {
-        var user = new User { UserName = request.Username };
+        var server = await serverConfigurationProvider.GetAsync(ct);
+        var user = new User
+        {
+            UserName = request.Username,
+            Server = server,
+            ServerId = server.Id,
+            Role = ServerRole.Member
+        };
+        
         var result = await userManager.CreateAsync(user, request.Password);
 
         if (!result.Succeeded)

@@ -15,7 +15,7 @@ public static class SeedData
         var defaultServer = new Entities.Server
         {
             Id = Guid.NewGuid(),
-            Name = "Default Server"
+            Name = "Voxen Server"
         };
 
         var adminUser = new User

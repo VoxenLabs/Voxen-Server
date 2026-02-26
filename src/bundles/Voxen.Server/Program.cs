@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Voxen.Server;
 using Voxen.Server.Authentication.Extensions;
 using Voxen.Server.Entities;
+using Voxen.Server.Interfaces;
 using Voxen.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +41,8 @@ var jwtSettings = builder.Configuration.GetSection("Jwt");
 builder.Services.AddVoxenAuthentication(jwtSettings);
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<IServerConfigurationProvider, ServerConfigurationProvider>();
 
 var app = builder.Build();
 
