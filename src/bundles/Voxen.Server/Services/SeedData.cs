@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Voxen.Server.Entities;
+using Voxen.Server.Enums;
 
 namespace Voxen.Server.Services;
 
