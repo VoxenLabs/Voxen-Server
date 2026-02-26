@@ -7,10 +7,6 @@ namespace Voxen.Server.Services;
 /// <summary>
 /// Provides methods for seeding initial data into the database.
 /// </summary>
-/// <remarks>
-/// This class is responsible for ensuring the database is initialized with default data, 
-/// such as creating default servers and admin users. It is typically used during application startup.
-/// </remarks>
 public static class SeedData
 {
     /// <summary>
@@ -19,13 +15,6 @@ public static class SeedData
     /// <param name="context">The database context used to interact with the database.</param>
     /// <param name="userManager">The user manager used to create and manage user accounts.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    /// <remarks>
-    /// This method ensures that the database is created and populated with initial data, 
-    /// such as a default server and an admin user. It is typically invoked during application startup.
-    /// </remarks>
-    /// <exception cref="InvalidOperationException">
-    /// Thrown if the creation of the admin user fails, providing details about the errors encountered.
-    /// </exception>
     public static async Task InitializeDatabaseAsync(VoxenDbContext context, UserManager<User> userManager)
     {
         await context.Database.EnsureCreatedAsync();
