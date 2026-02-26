@@ -1,34 +1,29 @@
-using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Voxen.Server.Entities;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using Voxen.Server.Authentication.Interfaces;
 
-namespace Voxen.Server.Services;
+namespace Voxen.Server.Authentication.Services;
 
-public class JwtTokenService
+/// <inheritdoc />
+public class JwtTokenService(IConfiguration config) : IJwtTokenService
 {
-    private readonly IConfiguration _config;
-
-    public JwtTokenService(IConfiguration config)
+    /// <inheritdoc />
+    public string CreateToken(Guid userId, string userName, string userRole)
     {
-        _config = config;
-    }
-
-    public string CreateToken(User user, IEnumerable<string> roles)
-    {
-        var jwt = _config.GetSection("Jwt");
+        var jwt = config.GetSection("Jwt");
         var key = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(jwt["Key"]!));
 
         var claims = new List<Claim>
         {
-            new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new(JwtRegisteredClaimNames.Email, user.UserName!),
-            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new(JwtRegisteredClaimNames.Sub, userId.ToString()),
+            new(JwtRegisteredClaimNames.Email, userName),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new("role", userRole)
         };
-
-        claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
 
         var token = new JwtSecurityToken(
             issuer: jwt["Issuer"],
