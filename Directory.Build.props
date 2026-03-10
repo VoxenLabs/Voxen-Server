@@ -23,9 +23,6 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<EnableTrimAnalyzer>false</EnableTrimAnalyzer>
 
-    <!-- Exclude migrations from SonarQube analysis -->
-    <SonarQubeExclude>$(SonarQubeExclude);**/Migrations/**</SonarQubeExclude>
-
 	</PropertyGroup>
 
 </Project>
