@@ -18,14 +18,16 @@ public static class SeedData
     /// <returns>A task that represents the asynchronous operation.</returns>
     public static async Task InitializeDatabaseAsync(VoxenDbContext context, UserManager<User> userManager)
     {
-        await context.Database.EnsureCreatedAsync();
+        await context.Database.MigrateAsync();
         if (await context.Server.AnyAsync())
             return;
 
         var defaultServer = new Entities.Server
         {
             Id = Guid.NewGuid(),
-            Name = "Voxen Server"
+            Name = "Voxen Server",
+            Logo = null,
+            LogoContentType = null
         };
 
         var adminUser = new User
