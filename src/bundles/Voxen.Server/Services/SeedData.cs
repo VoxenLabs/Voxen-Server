@@ -26,6 +26,7 @@ public static class SeedData
         {
             Id = Guid.NewGuid(),
             Name = "Voxen Server",
+            CreatedAt = DateTime.UtcNow,
             Logo = null,
             LogoContentType = null
         };

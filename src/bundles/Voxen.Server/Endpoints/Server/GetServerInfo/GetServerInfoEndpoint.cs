@@ -20,8 +20,8 @@ public sealed class GetServerInfoEndpoint(IServerConfigurationProvider serverCon
         {
             Name = server.Name,
             HasLogo = hasLogo,
+            CreatedAt = server.CreatedAt,
             LogoUrl = hasLogo ? "/server/logo" : null
         }, ct);
     }
 }
-

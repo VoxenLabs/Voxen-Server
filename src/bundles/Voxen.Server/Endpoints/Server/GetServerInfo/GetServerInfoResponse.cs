@@ -4,6 +4,7 @@ public sealed class GetServerInfoResponse
 {
     public required string Name { get; init; }
     public required bool HasLogo { get; init; }
+    public required DateTime CreatedAt { get; init; }
     public string? LogoUrl { get; init; }
 }
 

@@ -7,6 +7,11 @@ public class Server
     public string Name { get; set; }
 
     /// <summary>
+    /// Date and time when the server was created (stored in UTC).
+    /// </summary>
+    public DateTime CreatedAt { get; set; }
+
+    /// <summary>
     /// Raw server logo bytes (e.g. PNG/JPEG).
     /// </summary>
     public byte[]? Logo { get; set; }
