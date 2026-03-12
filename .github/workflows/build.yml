@@ -37,7 +37,12 @@ jobs:
         
       - name: Start SonarQube Analysis
         run: |
-          dotnet-sonarscanner begin /k:"Voxen-Server" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.vscoveragexml.reportsPaths=coverage_data.xml
+          dotnet-sonarscanner begin \
+          /k:"Voxen-Server" \
+          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+          /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
+          /d:sonar.cs.vscoveragexml.reportsPaths=coverage_data.xml \
+          /d:sonar.exclusions="**/Migrations/**/*"
 
       - name: Build
         run: dotnet build
