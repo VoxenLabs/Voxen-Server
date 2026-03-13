@@ -11,8 +11,8 @@ using Voxen.Server;
 namespace Voxen.Server.Migrations
 {
     [DbContext(typeof(VoxenDbContext))]
-    [Migration("20260310105703_AddServerLogo")]
-    partial class AddServerLogo
+    [Migration("20260313135904_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,6 +152,9 @@ namespace Voxen.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -203,6 +206,9 @@ namespace Voxen.Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<byte[]>("Logo")

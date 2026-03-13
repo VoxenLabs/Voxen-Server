@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Voxen.Server.Enums;
 
 namespace Voxen.Server.Entities;
@@ -26,7 +27,12 @@ public class Channel
     /// Gets or sets the name of the channel.
     /// </summary>
     public string Name { get; set; } = null!;
-    
+
+    /// <summary>
+    /// Date and time when the server was created (stored in UTC).
+    /// </summary>
+    public DateTime CreatedAt { get; set; }
+
     /// <summary>
     /// Gets or sets the type of the channel.
     /// </summary>
@@ -35,5 +41,5 @@ public class Channel
     /// <summary>
     /// Gets or sets the collection of messages associated with this channel.
     /// </summary>
-    public ICollection<Message>? Messages { get; set; }
+    [JsonIgnore] public ICollection<Message>? Messages { get; set; }
 }
