@@ -12,7 +12,7 @@ jobs:
     name: Build and analyze
     runs-on: [self-hosted, Linux]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -73,7 +73,7 @@ jobs:
     needs: ["build"]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - run: |
           docker image build .
