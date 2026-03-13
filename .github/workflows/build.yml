@@ -65,7 +65,7 @@ jobs:
       - name: Finish SonarQube Analysis
         if: success()
         run: |
-          dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          dotnet-sonarscanner end /d:sonar.token="${{ github.actor == 'dependabot[bot]' && secrets.SONAR_TOKEN_DEPENDABOT || secrets.SONAR_TOKEN }}"
 
   dry-run:
     name: Dry run docker image build
