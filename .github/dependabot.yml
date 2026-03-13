@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "update"
+    open-pull-requests-limit: 10
+    groups:
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+      major:
+        patterns:
+          - "*"
+        update-types:
+          - "version-update:semver-major"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "update"
+    open-pull-requests-limit: 5
