@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Voxen.Server.Entities;
 
 public class Server
@@ -21,6 +23,6 @@ public class Server
     /// </summary>
     public string? LogoContentType { get; set; }
 
-    public ICollection<User> Users { get; set; } = new List<User>();
-    public ICollection<Channel> Channels { get; set; } = new List<Channel>();
+    [JsonIgnore] public ICollection<User> Users { get; set; } = new List<User>();
+    [JsonIgnore] public ICollection<Channel> Channels { get; set; } = new List<Channel>();
 }
