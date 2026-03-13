@@ -39,8 +39,8 @@ jobs:
         run: |
           dotnet-sonarscanner begin \
           /k:"Voxen-Server" \
-          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
-          /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
+          /d:sonar.token="${{ github.actor == 'dependabot[bot]' && secrets.SONAR_TOKEN_DEPENDABOT || secrets.SONAR_TOKEN }}" \
+          /d:sonar.host.url="${{ github.actor == 'dependabot[bot]' && secrets.SONAR_URL_DEPENDABOT || secrets.SONAR_HOST_URL }}" \
           /d:sonar.cs.vscoveragexml.reportsPaths=coverage_data.xml \
           /d:sonar.exclusions="**/Migrations/**/*"
 
