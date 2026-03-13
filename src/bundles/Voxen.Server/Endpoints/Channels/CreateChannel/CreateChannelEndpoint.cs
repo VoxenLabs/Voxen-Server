@@ -20,7 +20,7 @@ public class CreateChannelEndpoint(IServerConfigurationProvider serverConfigurat
     /// <inheritdoc />
     public override async Task HandleAsync(CreateChannelRequest request, CancellationToken ct)
     {
-        if (!Enum.IsDefined(typeof(ChannelType), request.Type))
+        if (!Enum.IsDefined(request.Type))
         {
             AddError(r => r.Type, "Invalid channel type.");
             await Send.ErrorsAsync(400, ct);
@@ -30,6 +30,7 @@ public class CreateChannelEndpoint(IServerConfigurationProvider serverConfigurat
         var server = await serverConfigurationProvider.GetAsync(ct);
         var channel = new Channel
         {
+            Server = server,
             ServerId = server.Id,
             Name = request.Name,
             CreatedAt = DateTime.UtcNow,

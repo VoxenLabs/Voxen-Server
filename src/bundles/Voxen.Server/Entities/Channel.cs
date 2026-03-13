@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Voxen.Server.Enums;
 
 namespace Voxen.Server.Entities;
@@ -40,5 +41,5 @@ public class Channel
     /// <summary>
     /// Gets or sets the collection of messages associated with this channel.
     /// </summary>
-    public ICollection<Message>? Messages { get; set; }
+    [JsonIgnore] public ICollection<Message>? Messages { get; set; }
 }
