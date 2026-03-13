@@ -12,13 +12,13 @@ updates:
         patterns:
           - "*"
         update-types:
-          - "version-update:semver-patch"
-          - "version-update:semver-minor"
+          - "patch"
+          - "minor"
       major:
         patterns:
           - "*"
         update-types:
-          - "version-update:semver-major"
+          - "major"
 
   - package-ecosystem: "github-actions"
     directory: "/"
