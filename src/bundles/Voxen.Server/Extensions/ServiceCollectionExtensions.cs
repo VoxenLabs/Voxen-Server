@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +42,11 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddVoxenApiServices(this IServiceCollection services)
     {
+        services.ConfigureHttpJsonOptions(o =>
+        {
+            o.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        });
+        
         services.AddFastEndpoints();
         services.SwaggerDocument(o =>
         {
