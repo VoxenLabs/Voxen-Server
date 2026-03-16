@@ -15,7 +15,7 @@ namespace Voxen.Server.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.3");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.5");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
                 {
@@ -156,15 +156,10 @@ namespace Voxen.Server.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ServerId")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ServerId");
 
                     b.ToTable("Channels");
 
@@ -272,9 +267,6 @@ namespace Voxen.Server.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ServerId")
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("INTEGER");
 
@@ -290,8 +282,6 @@ namespace Voxen.Server.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
-
-                    b.HasIndex("ServerId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -347,17 +337,6 @@ namespace Voxen.Server.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Voxen.Server.Entities.Channel", b =>
-                {
-                    b.HasOne("Voxen.Server.Entities.Server", "Server")
-                        .WithMany("Channels")
-                        .HasForeignKey("ServerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Server");
-                });
-
             modelBuilder.Entity("Voxen.Server.Entities.Message", b =>
                 {
                     b.HasOne("Voxen.Server.Entities.Channel", "Channel")
@@ -377,27 +356,9 @@ namespace Voxen.Server.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Voxen.Server.Entities.User", b =>
-                {
-                    b.HasOne("Voxen.Server.Entities.Server", "Server")
-                        .WithMany("Users")
-                        .HasForeignKey("ServerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Server");
-                });
-
             modelBuilder.Entity("Voxen.Server.Entities.Channel", b =>
                 {
                     b.Navigation("Messages");
-                });
-
-            modelBuilder.Entity("Voxen.Server.Entities.Server", b =>
-                {
-                    b.Navigation("Channels");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Voxen.Server.Entities.User", b =>
