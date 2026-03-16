@@ -5,4 +5,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Voxen.Server.Domain\Voxen.Server.Domain.csproj" />
+  </ItemGroup>
 </Project>
