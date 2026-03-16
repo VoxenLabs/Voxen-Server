@@ -2,6 +2,10 @@
   <ItemGroup>
     <PackageReference Include="FastEndpoints.Swagger" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\modules\Voxen.Server.Authentication\Voxen.Server.Authentication.csproj" />

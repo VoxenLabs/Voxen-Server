@@ -46,6 +46,17 @@ On creation of the container, a default admin-user will be initialized with the 
 
 To authenticate the **Swagger** environment, make a call to the `/auth/login` endpoint with the above credentials to retrieve a JWT token. Then, use the "Authorize" button in the Swagger UI to input the token and gain access to authenticated endpoints.
 
+## Migrations
+
+Since no official version has been released yet, database migrations are not necessary and a new initialization must be performed on each database change. However, as the project evolves and more features are added, database migrations will become necessary at a later stage to manage changes to the database schema.
+
+To run database initialization, start by delete the `.db` files in `src/bundles/Voxen.Server`. Then navigate to the repository root and run the following command:
+```bash
+dotnet ef migrations add InitialCreate --project .\src\modules\Voxen.Server.Domain --startup-project .\src\bundles\Voxen.Server
+```
+
+A new database will be created with the updated schema and the initial data, which is usable both during debug in your chosen IDE, and on testing the generated Docker Image.
+
 ## Notes
 
 * This setup is not intended for production use.
