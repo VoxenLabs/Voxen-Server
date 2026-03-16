@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Voxen.Server.Domain;
 using Voxen.Server.Interfaces;
 
 namespace Voxen.Server.Services;
@@ -7,7 +8,7 @@ namespace Voxen.Server.Services;
 public class ServerConfigurationProvider(VoxenDbContext db) : IServerConfigurationProvider
 {
     /// <inheritdoc />
-    public async Task<Entities.Server> GetAsync(CancellationToken ct = default)
+    public async Task<Domain.Entities.Server> GetAsync(CancellationToken ct = default)
     {
         var records = await db.Server.ToListAsync(ct);
 

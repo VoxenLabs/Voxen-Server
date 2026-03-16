@@ -20,5 +20,6 @@
   </Folder>
   <Folder Name="/src/modules/">
     <Project Path="src/modules/Voxen.Server.Authentication/Voxen.Server.Authentication.csproj" />
+    <Project Path="src/modules/Voxen.Server.Domain/Voxen.Server.Domain.csproj" Id="329f3eab-3c7a-40a5-a814-c92c0bda7577" />
   </Folder>
 </Solution>

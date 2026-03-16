@@ -3,7 +3,8 @@ using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Authentication.Extensions;
-using Voxen.Server.Entities;
+using Voxen.Server.Domain;
+using Voxen.Server.Domain.Entities;
 
 namespace Voxen.Server.Extensions;
 

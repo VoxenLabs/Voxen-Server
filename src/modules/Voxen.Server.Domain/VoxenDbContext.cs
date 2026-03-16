@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Voxen.Server.Entities;
-using Voxen.Server.Enums;
+using Voxen.Server.Domain.Entities;
+using Voxen.Server.Domain.Enums;
 
-namespace Voxen.Server;
+namespace Voxen.Server.Domain;
 
 public class VoxenDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {

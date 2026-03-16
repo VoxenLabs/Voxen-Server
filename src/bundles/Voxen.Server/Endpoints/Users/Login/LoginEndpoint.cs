@@ -1,7 +1,7 @@
 using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Authentication.Interfaces;
-using Voxen.Server.Entities;
+using Voxen.Server.Domain.Entities;
 
 namespace Voxen.Server.Endpoints.Users.Login;
 

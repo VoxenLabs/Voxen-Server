@@ -1,4 +1,4 @@
-using Voxen.Server.Enums;
+using Voxen.Server.Domain.Enums;
 
 namespace Voxen.Server.Endpoints.Channels.CreateChannel;
 

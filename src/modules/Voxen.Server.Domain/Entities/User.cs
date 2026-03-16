@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
-using Voxen.Server.Enums;
+using Voxen.Server.Domain.Enums;
 
-namespace Voxen.Server.Entities;
+namespace Voxen.Server.Domain.Entities;
 
 /// <summary>
 /// Represents a user entity within the system.
@@ -16,7 +16,7 @@ public class User : IdentityUser<Guid>
     /// <summary>
     /// Gets or sets the server associated with the user.
     /// </summary>
-    public Server Server { get; set; } = null!;
+    public Domain.Entities.Server Server { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the role of the user within the associated server.

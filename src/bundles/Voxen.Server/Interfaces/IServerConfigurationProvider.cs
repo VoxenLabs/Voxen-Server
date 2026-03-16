@@ -1,3 +1,5 @@
+using Voxen.Server.Domain.Entities;
+
 namespace Voxen.Server.Interfaces;
 
 /// <summary>
@@ -17,10 +19,10 @@ public interface IServerConfigurationProvider
     /// <param name="ct">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
     /// <returns>
     /// A task that represents the asynchronous operation. The task result contains the 
-    /// <see cref="Entities.Server"/> instance representing the server configuration.
+    /// <see cref="Server"/> instance representing the server configuration.
     /// </returns>
     /// <exception cref="InvalidOperationException">
     /// Thrown if no server configuration exists or if multiple server configuration records are found.
     /// </exception>
-    public Task<Entities.Server> GetAsync(CancellationToken ct = default);
+    public Task<Domain.Entities.Server> GetAsync(CancellationToken ct = default);
 }

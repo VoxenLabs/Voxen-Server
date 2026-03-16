@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Voxen.Server.Entities;
-using Voxen.Server.Enums;
+using Voxen.Server.Domain.Entities;
+using Voxen.Server.Domain.Enums;
 
-namespace Voxen.Server.Services;
+namespace Voxen.Server.Domain.Services;
 
 /// <summary>
 /// Provides methods for seeding initial data into the database.
@@ -22,7 +22,7 @@ public static class SeedData
         if (await context.Server.AnyAsync())
             return;
 
-        var defaultServer = new Entities.Server
+        var defaultServer = new Domain.Entities.Server
         {
             Id = Guid.NewGuid(),
             Name = "Voxen Server",

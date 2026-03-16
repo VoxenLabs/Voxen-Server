@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using Voxen.Server.Enums;
+using Voxen.Server.Domain.Enums;
 
-namespace Voxen.Server.Entities;
+namespace Voxen.Server.Domain.Entities;
 
 /// <summary>
 /// Represents a communication channel within a server.

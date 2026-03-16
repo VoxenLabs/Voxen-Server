@@ -1,5 +1,3 @@
-using Voxen.Server.Entities;
-
 namespace Voxen.Server.Endpoints.Users.CreateUser;
 
 /// <summary>

@@ -1,4 +1,4 @@
-namespace Voxen.Server.Entities;
+namespace Voxen.Server.Domain.Entities;
 
 public class Message
 {

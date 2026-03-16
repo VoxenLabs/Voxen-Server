@@ -1,7 +1,7 @@
-namespace Voxen.Server.Enums;
+namespace Voxen.Server.Domain.Enums;
 
 /// <summary>
-/// Specifies the type of a communication channel.
+/// Specifies the type of communication channel.
 /// </summary>
 public enum ChannelType
 {

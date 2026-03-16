@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Voxen.Server.Entities;
+namespace Voxen.Server.Domain.Entities;
 
 /// <summary>
 /// Represents a server entity.

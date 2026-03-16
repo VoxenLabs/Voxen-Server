@@ -16,5 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\modules\Voxen.Server.Authentication\Voxen.Server.Authentication.csproj" />
+    <ProjectReference Include="..\..\modules\Voxen.Server.Domain\Voxen.Server.Domain.csproj" />
   </ItemGroup>
 </Project>

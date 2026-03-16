@@ -1,4 +1,4 @@
-namespace Voxen.Server.Enums;
+namespace Voxen.Server.Domain.Enums;
 
 /// <summary>
 /// Defines the roles that a user can have within a server.
