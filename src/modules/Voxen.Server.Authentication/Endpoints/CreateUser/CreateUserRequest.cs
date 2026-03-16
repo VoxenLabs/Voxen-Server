@@ -1,4 +1,4 @@
-namespace Voxen.Server.Endpoints.Users.CreateUser;
+namespace Voxen.Server.Authentication.Endpoints.CreateUser;
 
 /// <summary>
 /// Represents a request to create a new user in the system.

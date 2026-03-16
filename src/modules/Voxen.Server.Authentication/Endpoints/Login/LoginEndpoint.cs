@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Authentication.Interfaces;
 using Voxen.Server.Domain.Entities;
 
-namespace Voxen.Server.Endpoints.Users.Login;
+namespace Voxen.Server.Authentication.Endpoints.Login;
 
 /// <summary>
 /// Represents the endpoint responsible for handling user login requests.

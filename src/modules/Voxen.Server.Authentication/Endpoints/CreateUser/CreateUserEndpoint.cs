@@ -4,7 +4,7 @@ using Voxen.Server.Domain.Entities;
 using Voxen.Server.Domain.Enums;
 using Voxen.Server.Info.Interfaces;
 
-namespace Voxen.Server.Endpoints.Users.CreateUser;
+namespace Voxen.Server.Authentication.Endpoints.CreateUser;
 
 /// <summary>
 /// Represents an endpoint for creating a new user in the system.

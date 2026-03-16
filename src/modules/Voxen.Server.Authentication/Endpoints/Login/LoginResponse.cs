@@ -1,4 +1,4 @@
-namespace Voxen.Server.Endpoints.Users.Login;
+namespace Voxen.Server.Authentication.Endpoints.Login;
 
 /// <summary>
 /// Represents the response returned upon successful user login.
