@@ -35,7 +35,6 @@ public static class SeedData
         {
             Id = Guid.NewGuid(),
             UserName = "admin",
-            ServerId = defaultServer.Id,
             Role = ServerRole.Admin
         };
 

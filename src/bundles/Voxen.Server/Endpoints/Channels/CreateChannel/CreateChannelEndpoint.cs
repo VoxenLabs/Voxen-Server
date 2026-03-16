@@ -27,11 +27,8 @@ public class CreateChannelEndpoint(IServerConfigurationProvider serverConfigurat
             return;
         }
 
-        var server = await serverConfigurationProvider.GetAsync(ct);
         var channel = new Channel
         {
-            Server = server,
-            ServerId = server.Id,
             Name = request.Name,
             CreatedAt = DateTime.UtcNow,
             Type = request.Type
