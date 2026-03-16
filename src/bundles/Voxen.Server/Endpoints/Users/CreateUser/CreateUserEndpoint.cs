@@ -2,7 +2,7 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Domain.Entities;
 using Voxen.Server.Domain.Enums;
-using Voxen.Server.Interfaces;
+using Voxen.Server.Info.Interfaces;
 
 namespace Voxen.Server.Endpoints.Users.CreateUser;
 

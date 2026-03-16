@@ -3,19 +3,18 @@ using FastEndpoints.Swagger;
 using Voxen.Server.Authentication.Extensions;
 using Voxen.Server.Domain.Extensions;
 using Voxen.Server.Extensions;
-using Voxen.Server.Interfaces;
-using Voxen.Server.Services;
+using Voxen.Server.Info.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddVoxenApiServices();
 builder.Services.AddVoxenDb();
+builder.Services.AddVoxenServerInfo();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 builder.Services.AddVoxenAuthentication(jwtSettings);
 
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IServerConfigurationProvider, ServerConfigurationProvider>();
 
 var app = builder.Build();
 

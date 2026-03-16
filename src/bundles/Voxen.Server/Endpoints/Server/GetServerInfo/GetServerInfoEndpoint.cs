@@ -1,5 +1,5 @@
 using FastEndpoints;
-using Voxen.Server.Interfaces;
+using Voxen.Server.Info.Interfaces;
 
 namespace Voxen.Server.Endpoints.Server.GetServerInfo;
 

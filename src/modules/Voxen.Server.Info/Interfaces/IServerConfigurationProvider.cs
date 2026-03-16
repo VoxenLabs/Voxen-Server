@@ -1,6 +1,4 @@
-using Voxen.Server.Domain.Entities;
-
-namespace Voxen.Server.Interfaces;
+namespace Voxen.Server.Info.Interfaces;
 
 /// <summary>
 /// Provides functionality to retrieve server configuration details.

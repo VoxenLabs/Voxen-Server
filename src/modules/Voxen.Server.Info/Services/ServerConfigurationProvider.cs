@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Voxen.Server.Domain;
-using Voxen.Server.Interfaces;
+using Voxen.Server.Info.Interfaces;
 
-namespace Voxen.Server.Services;
+namespace Voxen.Server.Info.Services;
 
 /// <inheritdoc />
 public class ServerConfigurationProvider(VoxenDbContext db) : IServerConfigurationProvider

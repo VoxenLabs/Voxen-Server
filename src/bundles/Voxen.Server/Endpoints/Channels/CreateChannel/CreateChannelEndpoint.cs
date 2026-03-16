@@ -2,7 +2,7 @@ using FastEndpoints;
 using Voxen.Server.Domain;
 using Voxen.Server.Domain.Entities;
 using Voxen.Server.Domain.Enums;
-using Voxen.Server.Interfaces;
+using Voxen.Server.Info.Interfaces;
 
 namespace Voxen.Server.Endpoints.Channels.CreateChannel;
 
