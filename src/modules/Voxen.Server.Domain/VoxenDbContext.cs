@@ -14,14 +14,10 @@ public class VoxenDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     public DbSet<Channel> Channels => Set<Channel>();
     public DbSet<Message> Messages => Set<Message>();
 
+    /// <inheritdoc />
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
-        builder.Entity<User>()
-            .HasOne(u => u.Server)
-            .WithMany(s => s.Users)
-            .HasForeignKey(u => u.ServerId);
 
         builder.Entity<Channel>()
             .HasDiscriminator(c => c.Type)
@@ -31,11 +27,13 @@ public class VoxenDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
         builder.Entity<Message>()
             .HasOne(m => m.Channel)
             .WithMany(c => c.Messages)
-            .HasForeignKey(m => m.ChannelId);
+            .HasForeignKey(m => m.ChannelId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.Entity<Message>()
             .HasOne(m => m.User)
             .WithMany(u => u.Messages)
-            .HasForeignKey(m => m.UserId);
+            .HasForeignKey(m => m.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

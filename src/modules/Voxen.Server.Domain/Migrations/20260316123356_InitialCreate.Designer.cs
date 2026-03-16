@@ -11,7 +11,7 @@ using Voxen.Server.Domain;
 namespace Voxen.Server.Domain.Migrations
 {
     [DbContext(typeof(VoxenDbContext))]
-    [Migration("20260316122106_InitialCreate")]
+    [Migration("20260316123356_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -159,15 +159,10 @@ namespace Voxen.Server.Domain.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ServerId")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ServerId");
 
                     b.ToTable("Channels");
 
@@ -275,9 +270,6 @@ namespace Voxen.Server.Domain.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ServerId")
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("INTEGER");
 
@@ -293,8 +285,6 @@ namespace Voxen.Server.Domain.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
-
-                    b.HasIndex("ServerId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -350,17 +340,6 @@ namespace Voxen.Server.Domain.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Voxen.Server.Domain.Entities.Channel", b =>
-                {
-                    b.HasOne("Voxen.Server.Domain.Entities.Server", "Server")
-                        .WithMany("Channels")
-                        .HasForeignKey("ServerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Server");
-                });
-
             modelBuilder.Entity("Voxen.Server.Domain.Entities.Message", b =>
                 {
                     b.HasOne("Voxen.Server.Domain.Entities.Channel", "Channel")
@@ -380,27 +359,9 @@ namespace Voxen.Server.Domain.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Voxen.Server.Domain.Entities.User", b =>
-                {
-                    b.HasOne("Voxen.Server.Domain.Entities.Server", "Server")
-                        .WithMany("Users")
-                        .HasForeignKey("ServerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Server");
-                });
-
             modelBuilder.Entity("Voxen.Server.Domain.Entities.Channel", b =>
                 {
                     b.Navigation("Messages");
-                });
-
-            modelBuilder.Entity("Voxen.Server.Domain.Entities.Server", b =>
-                {
-                    b.Navigation("Channels");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Voxen.Server.Domain.Entities.User", b =>

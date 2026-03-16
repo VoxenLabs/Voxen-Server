@@ -21,12 +21,9 @@ public class CreateUserEndpoint(UserManager<User> userManager, IServerConfigurat
     /// <inheritdoc />
     public override async Task HandleAsync(CreateUserRequest request, CancellationToken ct)
     {
-        var server = await serverConfigurationProvider.GetAsync(ct);
         var user = new User
         {
             UserName = request.Username,
-            Server = server,
-            ServerId = server.Id,
             Role = ServerRole.Member
         };
         

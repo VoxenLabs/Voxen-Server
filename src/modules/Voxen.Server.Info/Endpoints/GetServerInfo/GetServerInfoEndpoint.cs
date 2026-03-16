@@ -11,7 +11,7 @@ public sealed class GetServerInfoEndpoint(IServerConfigurationProvider serverCon
     /// <inheritdoc />
     public override void Configure()
     {
-        Get("/server/info");
+        Get("/server");
         AllowAnonymous();
     }
 

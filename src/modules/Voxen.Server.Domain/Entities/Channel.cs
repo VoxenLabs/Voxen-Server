@@ -4,42 +4,33 @@ using Voxen.Server.Domain.Enums;
 namespace Voxen.Server.Domain.Entities;
 
 /// <summary>
-/// Represents a communication channel within a server.
+/// Represents a communication channel.
 /// </summary>
 public class Channel
 {
     /// <summary>
-    /// Gets or sets the unique identifier for the channel.
+    /// Unique identifier for the channel.
     /// </summary>
     public Guid Id { get; set; }
 
     /// <summary>
-    /// Gets or sets the unique identifier of the server associated with this channel.
+    /// Channel name.
     /// </summary>
-    public Guid ServerId { get; set; }
-    
-    /// <summary>
-    /// Gets or sets the server associated with this channel.
-    /// </summary>
-    public Server Server { get; set; } = null!;
+    public required string Name { get; set; }
 
     /// <summary>
-    /// Gets or sets the name of the channel.
-    /// </summary>
-    public string Name { get; set; } = null!;
-
-    /// <summary>
-    /// Date and time when the server was created (stored in UTC).
+    /// Creation timestamp (UTC).
     /// </summary>
     public DateTime CreatedAt { get; set; }
 
     /// <summary>
-    /// Gets or sets the type of the channel.
+    /// Channel type.
     /// </summary>
     public ChannelType Type { get; set; }
 
     /// <summary>
-    /// Gets or sets the collection of messages associated with this channel.
+    /// Messages in the channel.
     /// </summary>
-    [JsonIgnore] public ICollection<Message>? Messages { get; set; }
+    [JsonIgnore]
+    public ICollection<Message> Messages { get; set; } = new List<Message>();
 }
