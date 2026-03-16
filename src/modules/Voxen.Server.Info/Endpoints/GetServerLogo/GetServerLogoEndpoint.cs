@@ -1,7 +1,7 @@
 using FastEndpoints;
 using Voxen.Server.Info.Interfaces;
 
-namespace Voxen.Server.Endpoints.Server.GetServerLogo;
+namespace Voxen.Server.Info.Endpoints.GetServerLogo;
 
 /// <summary>
 /// Endpoint to retrieve the server's logo image.

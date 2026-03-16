@@ -1,4 +1,4 @@
-namespace Voxen.Server.Endpoints.Server.GetServerInfo;
+namespace Voxen.Server.Info.Endpoints.GetServerInfo;
 
 /// <summary>
 /// Response model returned by <see cref="GetServerInfoEndpoint"/>.

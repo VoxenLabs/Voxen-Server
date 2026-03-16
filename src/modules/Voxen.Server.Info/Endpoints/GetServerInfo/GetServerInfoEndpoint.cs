@@ -1,7 +1,7 @@
 using FastEndpoints;
 using Voxen.Server.Info.Interfaces;
 
-namespace Voxen.Server.Endpoints.Server.GetServerInfo;
+namespace Voxen.Server.Info.Endpoints.GetServerInfo;
 
 /// <summary>
 /// Endpoint to retrieve basic server information.
