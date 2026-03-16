@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="FastEndpoints" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Voxen.Server.Info\Voxen.Server.Info.csproj" />
+  </ItemGroup>
+</Project>

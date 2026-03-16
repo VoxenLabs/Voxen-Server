@@ -2,9 +2,10 @@ using FastEndpoints;
 using Voxen.Server.Domain;
 using Voxen.Server.Domain.Entities;
 using Voxen.Server.Domain.Enums;
+using Voxen.Server.Endpoints.Channels.CreateChannel;
 using Voxen.Server.Info.Interfaces;
 
-namespace Voxen.Server.Endpoints.Channels.CreateChannel;
+namespace Voxen.Server.Channels.Endpoints.CreateChannel;
 
 /// <summary>
 /// Represents the endpoint responsible for creating a new channel within a server.
