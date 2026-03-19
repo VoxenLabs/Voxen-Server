@@ -14,7 +14,7 @@ public sealed class GetServerInfoEndpoint(VoxenDbContext db) : EndpointWithoutRe
     public override void Configure()
     {
         Get("/channels");
-        Roles(VoxenRoles.Everyone);
+        Roles(RoleGroups.Everyone);
     }
 
     /// <inheritdoc />
