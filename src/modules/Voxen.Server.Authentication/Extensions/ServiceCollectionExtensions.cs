@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Voxen.Server.Authentication.Interfaces;
 using Voxen.Server.Authentication.Services;
+using Voxen.Server.Domain;
+using Voxen.Server.Domain.Entities;
 
 namespace Voxen.Server.Authentication.Extensions;
 
@@ -14,18 +17,24 @@ namespace Voxen.Server.Authentication.Extensions;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Configures JWT-based authentication for the application.
+    /// Configures authentication services for the application, including Identity and JWT authentication.
     /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> to which the authentication services will be added.</param>
-    /// <param name="jwtSettings">
-    /// A configuration section containing the JWT settings, including the signing key, issuer, and audience.
-    /// </param>
-    /// <returns>The updated <see cref="IServiceCollection"/> with authentication services configured.</returns>
-    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services,
+    public static IServiceCollection AddVoxenAuthentication(this IServiceCollection services,
         IConfigurationSection jwtSettings)
     {
-        var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
-        
+        services
+            .AddIdentityCore<User>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.User.RequireUniqueEmail = false;
+            })
+            .AddRoles<IdentityRole<Guid>>()
+            .AddEntityFrameworkStores<VoxenDbContext>()
+            .AddSignInManager()
+            .AddDefaultTokenProviders();
+
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -38,13 +47,16 @@ public static class ServiceCollectionExtensions
 
                     ValidIssuer = jwtSettings["Issuer"],
                     ValidAudience = jwtSettings["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!)),
 
                     ClockSkew = TimeSpan.Zero
                 };
             });
-        
+
         services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+        services.AddAuthorization();
+
         return services;
     }
 }

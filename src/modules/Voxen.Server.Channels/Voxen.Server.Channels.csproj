@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Voxen.Server.Info\Voxen.Server.Info.csproj" />
+  </ItemGroup>
+</Project>
