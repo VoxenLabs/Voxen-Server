@@ -37,11 +37,6 @@ public class VoxenDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<Channel>()
-            .HasDiscriminator(c => c.Type)
-            .HasValue<Channel>(ChannelType.Text)
-            .HasValue<Channel>(ChannelType.Voice);
-
         builder.Entity<Message>()
             .HasOne(m => m.Channel)
             .WithMany(c => c.Messages)
