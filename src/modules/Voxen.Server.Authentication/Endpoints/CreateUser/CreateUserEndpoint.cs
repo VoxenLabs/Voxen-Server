@@ -2,14 +2,13 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 using Voxen.Server.Domain.Entities;
 using Voxen.Server.Domain.Enums;
-using Voxen.Server.Info.Interfaces;
 
 namespace Voxen.Server.Authentication.Endpoints.CreateUser;
 
 /// <summary>
 /// Represents an endpoint for creating a new user in the system.
 /// </summary>
-public class CreateUserEndpoint(UserManager<User> userManager, IServerConfigurationProvider serverConfigurationProvider) : Endpoint<CreateUserRequest>
+public class CreateUserEndpoint(UserManager<User> userManager) : Endpoint<CreateUserRequest>
 {
     /// <inheritdoc />
     public override void Configure()

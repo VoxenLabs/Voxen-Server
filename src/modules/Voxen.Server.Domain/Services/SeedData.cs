@@ -22,7 +22,7 @@ public static class SeedData
         if (await context.Server.AnyAsync())
             return;
 
-        var defaultServer = new Domain.Entities.Server
+        var defaultServer = new Entities.Server
         {
             Id = Guid.NewGuid(),
             Name = "Voxen Server",

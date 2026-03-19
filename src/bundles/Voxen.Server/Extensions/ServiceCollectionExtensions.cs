@@ -1,10 +1,6 @@
 using System.Text.Json.Serialization;
 using FastEndpoints;
 using FastEndpoints.Swagger;
-using Microsoft.AspNetCore.Identity;
-using Voxen.Server.Authentication.Extensions;
-using Voxen.Server.Domain;
-using Voxen.Server.Domain.Entities;
 
 namespace Voxen.Server.Extensions;
 

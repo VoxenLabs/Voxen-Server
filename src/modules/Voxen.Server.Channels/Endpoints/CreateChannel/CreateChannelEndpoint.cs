@@ -3,14 +3,13 @@ using Voxen.Server.Domain;
 using Voxen.Server.Domain.Entities;
 using Voxen.Server.Domain.Enums;
 using Voxen.Server.Endpoints.Channels.CreateChannel;
-using Voxen.Server.Info.Interfaces;
 
 namespace Voxen.Server.Channels.Endpoints.CreateChannel;
 
 /// <summary>
 /// Represents the endpoint responsible for creating a new channel within a server.
 /// </summary>
-public class CreateChannelEndpoint(IServerConfigurationProvider serverConfigurationProvider, VoxenDbContext db) : Endpoint<CreateChannelRequest>
+public class CreateChannelEndpoint(VoxenDbContext db) : Endpoint<CreateChannelRequest>
 {
     /// <inheritdoc />
     public override void Configure()
