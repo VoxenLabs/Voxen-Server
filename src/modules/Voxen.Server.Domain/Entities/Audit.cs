@@ -2,6 +2,9 @@ using Voxen.Server.Domain.Enums;
 
 namespace Voxen.Server.Domain.Entities;
 
+/// <summary>
+/// Represents an audit log entry within the Voxen server.
+/// </summary>
 public class Audit
 {
     /// <summary>
