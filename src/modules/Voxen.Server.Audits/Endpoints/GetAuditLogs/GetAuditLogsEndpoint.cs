@@ -7,6 +7,9 @@ using Voxen.Server.Domain.Enums;
 
 namespace Voxen.Server.Audits.Endpoints.GetAuditLogs;
 
+/// <summary>
+/// An endpoint for retrieving audit logs.
+/// </summary>
 public sealed class GetAuditLogsEndpoint(VoxenDbContext db) : EndpointWithoutRequest<List<GetAuditLogsResponse>>
 {
     /// <inheritdoc />
