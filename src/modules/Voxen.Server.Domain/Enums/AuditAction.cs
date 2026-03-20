@@ -5,5 +5,8 @@ namespace Voxen.Server.Domain.Enums;
 /// </summary>
 public enum AuditAction
 {
-    // to be filled when needed
+    /// <summary>
+    /// Represents the creation of a new entity or record in the audit log.
+    /// </summary>
+    Create
 }

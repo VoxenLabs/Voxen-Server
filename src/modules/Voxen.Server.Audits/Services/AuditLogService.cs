@@ -18,7 +18,6 @@ public class AuditLogService(VoxenDbContext db) : IAuditLogService
         WriteIndented = false
     };
 
-
     /// <inheritdoc />
     public async Task LogAsync(User actor, AuditAction action, AuditCategory category, Guid entityId, IEnumerable<AuditChange> changes, CancellationToken ct = default)
     {
