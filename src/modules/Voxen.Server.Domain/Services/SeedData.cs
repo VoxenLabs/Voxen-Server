@@ -11,12 +11,6 @@ namespace Voxen.Server.Domain.Services;
 /// </summary>
 public static class SeedData
 {
-    private static readonly JsonSerializerOptions JsonOptions = new()
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = false
-    };
-
     /// <summary>
     /// Initializes the database with default data asynchronously.
     /// </summary>
