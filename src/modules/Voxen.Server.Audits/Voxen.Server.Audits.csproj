@@ -2,6 +2,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Voxen.Server.Domain\Voxen.Server.Domain.csproj" />
+  </ItemGroup>
 </Project>
 
 

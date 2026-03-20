@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using Voxen.Server.Audits.Interfaces;
+using Voxen.Server.Audits.Services;
 
 namespace Voxen.Server.Audits.Extensions;
 
@@ -10,5 +12,10 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Adds the Voxen Audits services to the specified <see cref="IServiceCollection"/>.
     /// </summary>
-    public static IServiceCollection AddVoxenAudits(this IServiceCollection services) => services;
+    public static IServiceCollection AddVoxenAudits(this IServiceCollection services)
+    {
+        services.AddScoped<IAuditLogService, AuditLogService>();
+
+        return services;
+    }
 }
