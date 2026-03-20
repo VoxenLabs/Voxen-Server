@@ -195,7 +195,6 @@ namespace Voxen.Server.Domain.Migrations
                     Action = table.Column<string>(type: "TEXT", nullable: false),
                     Category = table.Column<string>(type: "TEXT", nullable: false),
                     EntityId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    EntityName = table.Column<string>(type: "TEXT", nullable: true),
                     ChangesJson = table.Column<string>(type: "TEXT", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },

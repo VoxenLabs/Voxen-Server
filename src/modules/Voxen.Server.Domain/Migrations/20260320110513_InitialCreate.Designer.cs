@@ -11,7 +11,7 @@ using Voxen.Server.Domain;
 namespace Voxen.Server.Domain.Migrations
 {
     [DbContext(typeof(VoxenDbContext))]
-    [Migration("20260320094125_InitialCreate")]
+    [Migration("20260320110513_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -167,9 +167,6 @@ namespace Voxen.Server.Domain.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("EntityId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EntityName")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("UserId")

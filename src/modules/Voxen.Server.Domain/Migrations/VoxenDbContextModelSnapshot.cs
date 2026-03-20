@@ -166,9 +166,6 @@ namespace Voxen.Server.Domain.Migrations
                     b.Property<Guid?>("EntityId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("EntityName")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 

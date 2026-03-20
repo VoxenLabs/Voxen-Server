@@ -56,9 +56,9 @@ public static class SeedData
             ChangesJson = """
                           [
                               {
-                                    "propertyName": "Name",
-                                    "oldValue": null,
-                                    "newValue": "Voxen Server"
+                                    "PropertyName": "Name",
+                                    "OldValue": null,
+                                    "NewValue": "Voxen Server"
                               }
                           ]
                           """,
@@ -92,14 +92,14 @@ public static class SeedData
             ChangesJson = """
                           [
                               {
-                                    "propertyName": "Name",
-                                    "oldValue": null,
-                                    "newValue": "admin"
+                                    "PropertyName": "Name",
+                                    "OldValue": null,
+                                    "NewValue": "admin"
                               },
                               {
-                                    "propertyName": "Role",
-                                    "oldValue": null,
-                                    "newValue": "Admin"
+                                    "PropertyName": "Role",
+                                    "OldValue": null,
+                                    "NewValue": "Admin"
                               }
                           ]
                           """,

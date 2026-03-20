@@ -38,11 +38,6 @@ public class Audit
     public Guid? EntityId { get; set; }
 
     /// <summary>
-    /// Optional human-readable identifier
-    /// </summary>
-    public string? EntityName { get; set; }
-
-    /// <summary>
     /// Backing field for JSON storage in DB.
     /// </summary>
     public string? ChangesJson { get; set; }
