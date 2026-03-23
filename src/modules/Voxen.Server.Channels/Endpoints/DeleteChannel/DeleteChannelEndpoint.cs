@@ -8,20 +8,19 @@ namespace Voxen.Server.Channels.Endpoints.DeleteChannel;
 /// <summary>
 /// Represents the endpoint responsible for handling the deletion of a communication channel.
 /// </summary>
-public sealed class DeleteChannelEndpoint(VoxenDbContext db) : EndpointWithoutRequest
+public sealed class DeleteChannelEndpoint(VoxenDbContext db) : Endpoint<DeleteChannelRequest>
 {
     /// <inheritdoc />
     public override void Configure()
     {
-        Delete("/channels/{id:guid}");
+        Delete("/channels/{id}");
         Roles(nameof(ServerRole.Admin));
     }
 
     /// <inheritdoc />
-    public override async Task HandleAsync(CancellationToken ct)
+    public override async Task HandleAsync(DeleteChannelRequest request, CancellationToken ct)
     {
-        var channelId = Route<Guid>("id");
-        var channel = await db.Channels.FirstOrDefaultAsync(c => c.Id == channelId, ct);
+        var channel = await db.Channels.FirstOrDefaultAsync(c => c.Id == request.Id, ct);
 
         if (channel is null)
         {
