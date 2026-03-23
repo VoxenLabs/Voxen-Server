@@ -13,15 +13,15 @@ public sealed class DeleteChannelEndpoint(VoxenDbContext db) : EndpointWithoutRe
     /// <inheritdoc />
     public override void Configure()
     {
-        Delete("/channels/{ChannelId}");
+        Delete("/channels/{Id:guid}");
         Roles(nameof(ServerRole.Admin));
     }
 
     /// <inheritdoc />
     public override async Task HandleAsync(CancellationToken ct)
     {
-        var channelId = Route<string>("ChannelId");
-        var channel = await db.Channels.FirstOrDefaultAsync(c => c.Id.ToString() == channelId, ct);
+        var channelId = Route<Guid>("Id");
+        var channel = await db.Channels.FirstOrDefaultAsync(c => c.Id == channelId, ct);
 
         if (channel is null)
         {
