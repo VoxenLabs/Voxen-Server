@@ -12,9 +12,4 @@ public class User : IdentityUser<Guid>
     /// Gets or sets the role of the user.
     /// </summary>
     public ServerRole Role { get; set; }
-
-    /// <summary>
-    /// Messages sent by the user.
-    /// </summary>
-    public ICollection<Message> Messages { get; set; } = new List<Message>();
 }

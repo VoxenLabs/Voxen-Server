@@ -1,6 +1,6 @@
 namespace Voxen.Server.Channels.Endpoints.SendMessage;
 
-public class SendMessageToChannelResponse
+public class SendMessageResponse
 {
     public Guid Id { get; set; }
     public Guid ChannelId { get; set; }

@@ -1,7 +1,7 @@
 namespace Voxen.Server.Channels.Endpoints.SendMessage;
 
-public class SendMessageToChannelRequest
+public class SendMessageRequest
 {
-    public required Guid ChannelId { get; set; }
+    public Guid ChannelId { get; set; }
     public required string Content { get; set; }
 }
