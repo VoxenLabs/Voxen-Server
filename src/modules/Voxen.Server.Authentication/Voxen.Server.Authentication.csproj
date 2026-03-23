@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <PackageReference Include="FastEndpoints" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Voxen.Server.Domain\Voxen.Server.Domain.csproj" />
-    <ProjectReference Include="..\Voxen.Server.Info\Voxen.Server.Info.csproj" />
   </ItemGroup>
 </Project>
