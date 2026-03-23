@@ -30,6 +30,7 @@ public sealed class SendMessageEndpoint(
             s.Summary = "Send a message to a channel";
             s.Description = "Creates a new message in the specified channel and broadcasts it to all connected clients via SignalR. Only text channels support messages.";
 
+            s.Params["ChannelId"] = "The unique identifier of the channel.";
             s.RequestParam(r => r.Content, "The content of the message to send.");
 
             s.Response<SendMessageResponse>(200, "Message sent successfully.");
