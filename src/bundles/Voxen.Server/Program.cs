@@ -9,23 +9,23 @@ using Voxen.Server.Channels.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services
+    .AddHttpContextAccessor();
+
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 builder.Services
     .AddVoxenApiServices()
     .AddVoxenAuthentication(jwtSettings)
     .AddVoxenChannels()
     .AddVoxenDb()
-    .AddVoxenServerInfo()
-    .AddHttpContextAccessor();
+    .AddVoxenServerInfo();
 
 var app = builder.Build();
 
 app
     .UseFastEndpoints()
     .UseSwaggerGen()
-    .UseStaticFiles()
-    .UseAuthentication()
-    .UseAuthorization();
+    .UseStaticFiles();
 
 app.UseVoxenAuthentication();
 await app.Services.UseVoxenDb();
