@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Voxen.Server.Channels.Hubs;
 
+/// <summary>
+/// Represents a SignalR hub for managing text-based chat channels.
+/// </summary>
 public class TextChat : Hub
 {
     /// <summary>

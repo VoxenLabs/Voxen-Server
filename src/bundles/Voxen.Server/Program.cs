@@ -6,7 +6,6 @@ using Voxen.Server.Channels.Extensions;
 using Voxen.Server.Domain.Extensions;
 using Voxen.Server.Extensions;
 using Voxen.Server.Info.Extensions;
-using Voxen.Server.Channels.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
