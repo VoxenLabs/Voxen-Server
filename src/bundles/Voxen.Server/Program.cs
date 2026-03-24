@@ -7,17 +7,18 @@ using Voxen.Server.Info.Extensions;
 using Voxen.Server.Channels.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services
-    .AddVoxenApiServices()
-    .AddVoxenDb()
-    .AddVoxenServerInfo()
-    .AddVoxenChannels();
-
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 
+// referenced projects
 builder.Services
+    .AddVoxenApiServices()
     .AddVoxenAuthentication(jwtSettings)
+    .AddVoxenChannels();
+    .AddVoxenDb()
+    .AddVoxenServerInfo()
+
+// generic services
+builder.Services
     .AddHttpContextAccessor();
 
 var app = builder.Build();
@@ -29,6 +30,7 @@ app
     .UseAuthentication()
     .UseAuthorization();
 
+// referenced projects
 await app.Services.UseVoxenDb();
 
 await app.RunAsync();
