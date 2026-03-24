@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
 using Voxen.Server.Domain.Entities;
 using Voxen.Server.Domain.Enums;
 
