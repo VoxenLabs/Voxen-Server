@@ -19,6 +19,7 @@
     <Project Path="src/bundles/Voxen.Server/Voxen.Server.csproj" />
   </Folder>
   <Folder Name="/src/modules/">
+    <Project Path="src/modules/Voxen.Server.Audits/Voxen.Server.Audits.csproj" Id="58751d38-b758-4acd-9143-8840332fb6af" />
     <Project Path="src/modules/Voxen.Server.Authentication/Voxen.Server.Authentication.csproj" />
     <Project Path="src/modules/Voxen.Server.Channels/Voxen.Server.Channels.csproj" Id="2cdf63df-e3a2-44a4-a49a-3228a490d5ac" />
     <Project Path="src/modules/Voxen.Server.Domain/Voxen.Server.Domain.csproj" Id="329f3eab-3c7a-40a5-a814-c92c0bda7577" />

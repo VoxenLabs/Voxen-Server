@@ -32,6 +32,11 @@ public class VoxenDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     /// </summary>
     public DbSet<Message> Messages => Set<Message>();
 
+    /// <summary>
+    /// Gets the database set for audit logs.
+    /// </summary>
+    public DbSet<Audit> AuditLogs => Set<Audit>();
+
     /// <inheritdoc />
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -48,5 +53,24 @@ public class VoxenDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
             .WithMany(u => u.Messages)
             .HasForeignKey(m => m.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<Audit>(entity =>
+        {
+            entity.HasKey(a => a.Id);
+
+            entity.Property(a => a.Action)
+                .HasConversion<string>();
+
+            entity.Property(a => a.Category)
+                .HasConversion<string>();
+
+            entity.Property(a => a.ChangesJson)
+                .HasColumnType("TEXT");
+
+            entity.HasOne(a => a.User)
+                .WithMany()
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
     }
 }
