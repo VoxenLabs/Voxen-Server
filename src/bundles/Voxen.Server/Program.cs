@@ -10,15 +10,17 @@ using Voxen.Server.Channels.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services
+    .AddHttpContextAccessor();
+
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 builder.Services
+    .AddVoxenAudits()
     .AddVoxenApiServices()
     .AddVoxenAuthentication(jwtSettings)
     .AddVoxenChannels()
     .AddVoxenDb()
-    .AddVoxenServerInfo()
-    .AddVoxenAudits()
-    .AddHttpContextAccessor();
+    .AddVoxenServerInfo();
 
 var app = builder.Build();
 
