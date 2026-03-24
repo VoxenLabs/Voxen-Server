@@ -2,6 +2,7 @@ using FastEndpoints;
 using FastEndpoints.Swagger;
 using Voxen.Server.Audits.Extensions;
 using Voxen.Server.Authentication.Extensions;
+using Voxen.Server.Channels.Extensions;
 using Voxen.Server.Domain.Extensions;
 using Voxen.Server.Extensions;
 using Voxen.Server.Info.Extensions;
@@ -24,9 +25,7 @@ var app = builder.Build();
 app
     .UseFastEndpoints()
     .UseSwaggerGen()
-    .UseStaticFiles()
-    .UseAuthentication()
-    .UseAuthorization();
+    .UseStaticFiles();
 
 app.UseVoxenAuthentication();
 await app.Services.UseVoxenDb();

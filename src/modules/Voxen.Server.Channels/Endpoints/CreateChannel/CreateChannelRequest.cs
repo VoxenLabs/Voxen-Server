@@ -1,6 +1,6 @@
 using Voxen.Server.Domain.Enums;
 
-namespace Voxen.Server.Endpoints.Channels.CreateChannel;
+namespace Voxen.Server.Channels.Endpoints.CreateChannel;
 
 /// <summary>
 /// Represents a request to create a new channel within the server.
