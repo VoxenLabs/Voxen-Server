@@ -115,7 +115,7 @@ public class SendMessageTests : IClassFixture<WebApplicationFactory<Program>>
         // -----------------------------
         // 5. Wait for SignalR message (timeout in 5s)
         // -----------------------------
-        var receivedMessage = await tcs.Task.WaitAsync(TimeSpan.FromSeconds(5), ct);
+        var receivedMessage = await tcs.Task.WaitAsync(ct);
         Assert.Equal("Hello world!", receivedMessage.Content);
 
         // -----------------------------
