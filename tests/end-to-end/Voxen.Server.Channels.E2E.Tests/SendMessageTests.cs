@@ -11,6 +11,10 @@ using Voxen.Server.Domain.Enums;
 
 namespace Voxen.Server.Channels.E2E.Tests;
 
+/// <summary>
+/// End-to-end tests for verifying message sending behavior within channels,
+/// including HTTP endpoint interaction and SignalR event propagation.
+/// </summary>
 public class SendMessageTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private static readonly JsonSerializerOptions JsonOptions = new()
@@ -18,16 +22,34 @@ public class SendMessageTests : IClassFixture<WebApplicationFactory<Program>>
         PropertyNameCaseInsensitive = true,
         Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) }
     };
-
     private readonly HttpClient _client;
     private readonly WebApplicationFactory<Program> _factory;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SendMessageTests"/> class.
+    /// </summary>
     public SendMessageTests(WebApplicationFactory<Program> factory)
     {
         _factory = factory.WithWebHostBuilder(builder => { });
         _client = _factory.CreateClient();
     }
 
+    /// <summary>
+    /// Verifies that sending a message through the HTTP endpoint
+    /// correctly triggers a SignalR <c>ReceiveMessage</c> event
+    /// for connected clients in the same channel.
+    /// </summary>
+    /// <remarks>
+    /// Test flow:
+    /// <list type="number">
+    /// <item><description>Authenticate and obtain an access token.</description></item>
+    /// <item><description>Create a new text channel.</description></item>
+    /// <item><description>Establish a SignalR connection and join the channel.</description></item>
+    /// <item><description>Send a message via the HTTP endpoint.</description></item>
+    /// <item><description>Assert that the message is received via SignalR.</description></item>
+    /// <item><description>Leave the channel and close the connection.</description></item>
+    /// </list>
+    /// </remarks>
     [Fact]
     public async Task SendMessageEndpoint_CorrectlyTriggersSignalR()
     {
