@@ -102,7 +102,7 @@ public class SendMessageTests : IClassFixture<WebApplicationFactory<Program>>
             .WithUrl(new Uri(baseUri, "/channels/connect"), options =>
             {
                 options.HttpMessageHandlerFactory = _ => handler;
-                options.AccessTokenProvider = () => Task.FromResult(loginResult.AccessToken);
+                options.AccessTokenProvider = () => Task.FromResult(loginResult.AccessToken)!;
             })
             .WithAutomaticReconnect()
             .Build();
