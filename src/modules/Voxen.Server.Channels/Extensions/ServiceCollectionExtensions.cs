@@ -10,5 +10,10 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Adds and configures Voxen Channels services to the specified <see cref="IServiceCollection"/>.
     /// </summary>
-    public static IServiceCollection AddVoxenChannels(this IServiceCollection services) => services;
+    public static IServiceCollection AddVoxenChannels(this IServiceCollection services)
+    {
+        services.AddSignalR();
+
+        return services;
+    }
 }

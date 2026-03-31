@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Voxen.Server.Domain.Entities;
-using Voxen.Server.Domain.Enums;
 
 namespace Voxen.Server.Domain;
 
@@ -50,7 +49,7 @@ public class VoxenDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 
         builder.Entity<Message>()
             .HasOne(m => m.User)
-            .WithMany(u => u.Messages)
+            .WithMany()
             .HasForeignKey(m => m.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 

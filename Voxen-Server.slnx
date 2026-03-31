@@ -25,4 +25,8 @@
     <Project Path="src/modules/Voxen.Server.Domain/Voxen.Server.Domain.csproj" Id="329f3eab-3c7a-40a5-a814-c92c0bda7577" />
     <Project Path="src/modules/Voxen.Server.Info/Voxen.Server.Info.csproj" Id="1079fa84-319e-4b74-852e-d213933d8814" />
   </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/end-to-end/">
+    <Project Path="tests/end-to-end/Voxen.Server.Channels.E2E.Tests/Voxen.Server.Channels.E2E.Tests.csproj" Id="f711d6b3-c5a1-4b07-8b82-8569f37a4ca9" />
+  </Folder>
 </Solution>
