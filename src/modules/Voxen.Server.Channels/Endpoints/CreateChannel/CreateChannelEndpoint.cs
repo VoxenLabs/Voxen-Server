@@ -8,7 +8,7 @@ namespace Voxen.Server.Channels.Endpoints.CreateChannel;
 /// <summary>
 /// Represents the endpoint responsible for creating a new channel within a server.
 /// </summary>
-public class CreateChannelEndpoint(VoxenDbContext db) : Endpoint<CreateChannelRequest>
+public class CreateChannelEndpoint(VoxenDbContext db) : Endpoint<CreateChannelRequest, CreateChannelResponse>
 {
     /// <inheritdoc />
     public override void Configure()
@@ -36,7 +36,13 @@ public class CreateChannelEndpoint(VoxenDbContext db) : Endpoint<CreateChannelRe
 
         db.Channels.Add(channel);
         await db.SaveChangesAsync(ct);
-
-        await Send.OkAsync(channel, ct);
+        
+        await Send.OkAsync(new CreateChannelResponse
+        {
+            Id = channel.Id,
+            Name = channel.Name,
+            CreatedAt = channel.CreatedAt,
+            Type = channel.Type
+        }, ct);
     }
 }
